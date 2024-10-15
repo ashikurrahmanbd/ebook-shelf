@@ -1,4 +1,9 @@
+import 'package:ebook_shelf/app_bottom_navigation.dart';
+import 'package:ebook_shelf/pages/books.dart';
 import 'package:ebook_shelf/pages/homepage.dart';
+import 'package:ebook_shelf/pages/profile.dart';
+import 'package:ebook_shelf/pages/reading.dart';
+import 'package:ebook_shelf/pages/single_book.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -40,8 +45,15 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
+      initialRoute: '/',
+      routes: {
+        '/': (context) => AppBottomNavigation(),
+        '/books' : (context) => Books(),
+        '/readings' : (context) => Reading(),
+        '/profile' : (context) => Profile(),
+        '/singlebook' : (context) => SingleBook(),
 
-      home: HomePage(),
+      },
     );
   }
 }

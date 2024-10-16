@@ -1,8 +1,6 @@
-import 'package:ebook_shelf/pages/books.dart';
-import 'package:ebook_shelf/pages/profile.dart';
-import 'package:ebook_shelf/pages/reading.dart';
 import 'package:ebook_shelf/pages/single_book.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 
 class HomePage extends StatefulWidget {
     const HomePage({super.key});
@@ -24,14 +22,14 @@ class _HomePageState extends State<HomePage> {
       return  Scaffold(
         appBar: AppBar(
 
-          title: Text('eBook Shelf', style: TextStyle(color: Colors.white),),
+          title: const Text('eBook Shelf', style: TextStyle(color: Colors.white),),
           backgroundColor: primaryColor,
         ),
 
 
 
         body: SingleChildScrollView(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           child: Column(
             children: [
 
@@ -39,10 +37,10 @@ class _HomePageState extends State<HomePage> {
               TextField(
                 decoration: InputDecoration(
                   hintText: 'Search Book...',
-                  hintStyle: TextStyle( color: Colors.grey),
+                  hintStyle: const TextStyle( color: Colors.grey),
                   filled: true,
-                  fillColor: Color(0xFFECECEC),
-                  suffixIcon: Icon(Icons.search),
+                  fillColor: const Color(0xFFECECEC),
+                  suffixIcon: const Icon(Icons.search),
                   suffixIconColor: Colors.grey,
 
                   border: OutlineInputBorder(
@@ -50,14 +48,14 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(100),
 
                   ),
-                  contentPadding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 15.0),
 
                 ),
               ),
 
-              SizedBox(height: 30,),
+              const SizedBox(height: 30,),
               
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -74,18 +72,18 @@ class _HomePageState extends State<HomePage> {
                       onTap: (){
                         //navigate to a all trending Books Page
                       },
-                      child: Text('View All'),
+                      child: const Text('View All'),
                     )
                   ],
                 ),
               ),
 
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               
               Container(
                 height: 250,
 
-                padding: EdgeInsets.symmetric(vertical: 5),
+                padding: const EdgeInsets.symmetric(vertical: 5),
                 child: ListView.builder(
 
                     scrollDirection: Axis.horizontal,
@@ -93,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (context, index){
 
                       return Container(
-                        margin: EdgeInsets.only(right: 8),
+                        margin: const EdgeInsets.only(right: 8),
                         height: 150,
                         width: 100,
                         child: Column(
@@ -108,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                                       color: Colors.black.withOpacity(0.2),
                                       blurRadius: 2.0,
                                       spreadRadius: 1.0,
-                                      offset: Offset(1, 3),
+                                      offset: const Offset(1, 3),
                                     )
                                   ]
 
@@ -150,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                               height: 80,
                                //same as container width and image width
 
-                              margin: EdgeInsets.only(top: 5),
+                              margin: const EdgeInsets.only(top: 5),
 
                               child: Column(
 
@@ -160,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.normal,
                                       color: Colors.black
@@ -171,25 +169,25 @@ class _HomePageState extends State<HomePage> {
 
                                   Text(
                                     trendingbooks[index]['author'].toString(),
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.normal,
 
 
                                     ),
                                   ),
-                                  
-                                  // start icons
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
 
-                                      Text('('),
-                                      Icon(Icons.star, color: Colors.yellow,),
-                                      Text('${trendingbooks[index]['rating'].toString()})'),
+                                  SizedBox(height: 2,),
 
-                                    ],
-                                  )
+                                  // star rating
+                                  RatingStars(
+                                    starCount: 5,
+                                    value: trendingbooks[index]['rating']!,
+                                    starSize: 12,
+                                    starSpacing: 2,
+                                    starColor: Colors.yellow,
+                                    valueLabelVisibility: false,
+                                  ),
 
 
                                 ],
@@ -207,7 +205,7 @@ class _HomePageState extends State<HomePage> {
 
 
               // Second column started for Recommanded books
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -224,18 +222,18 @@ class _HomePageState extends State<HomePage> {
                       onTap: (){
                         //navigate to a all trending Books Page
                       },
-                      child: Text('View All'),
+                      child: const Text('View All'),
                     )
                   ],
                 ),
               ),
 
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
 
               Container(
                 height: 250,
 
-                padding: EdgeInsets.symmetric(vertical: 5),
+                padding: const EdgeInsets.symmetric(vertical: 5),
                 child: ListView.builder(
 
                     scrollDirection: Axis.horizontal,
@@ -243,7 +241,7 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (context, index){
 
                       return Container(
-                        margin: EdgeInsets.only(right: 8),
+                        margin: const EdgeInsets.only(right: 8),
                         height: 150,
                         width: 100,
                         child: Column(
@@ -258,7 +256,7 @@ class _HomePageState extends State<HomePage> {
                                       color: Colors.black.withOpacity(0.2),
                                       blurRadius: 2.0,
                                       spreadRadius: 1.0,
-                                      offset: Offset(1, 3),
+                                      offset: const Offset(1, 3),
                                     )
                                   ]
 
@@ -302,7 +300,7 @@ class _HomePageState extends State<HomePage> {
                                 height: 80,
                                 //same as container width and image width
 
-                                margin: EdgeInsets.only(top: 5),
+                                margin: const EdgeInsets.only(top: 5),
 
                                 child: Column(
 
@@ -312,7 +310,7 @@ class _HomePageState extends State<HomePage> {
                                       maxLines: 1,
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.center,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.normal,
                                           color: Colors.black
@@ -323,7 +321,7 @@ class _HomePageState extends State<HomePage> {
 
                                     Text(
                                       recommendedbooks[index]['author'].toString(),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.normal,
 
@@ -331,17 +329,17 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
 
-                                    // start icons
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
+                                    SizedBox(height: 2,),
+                                    // star rating
+                                    RatingStars(
+                                      starCount: 5,
+                                      value: recommendedbooks[index]['rating']!,
+                                      starSize: 13,
+                                      starSpacing: 2,
+                                      starColor: Colors.yellow,
+                                      valueLabelVisibility: false,
+                                    ),
 
-                                        Text('('),
-                                        Icon(Icons.star, color: Colors.yellow,),
-                                        Text('${recommendedbooks[index]['rating'].toString()})'),
-
-                                      ],
-                                    )
 
 
                                   ],
@@ -376,7 +374,7 @@ final List<Map<String, dynamic>> trendingbooks = [
     'image': 'assets/images/ebok1.png',
     'title': 'Create Your Own Business',
     'price': 9.99,
-    'rating': '4.7',
+    'rating': 4.7,
     'author': 'John Doe',
     'description': 'This book provides an insightful guide for aspiring entrepreneurs looking to navigate the complex world of business. It covers essential topics such as market research, business planning, and financial management, offering practical advice to help readers turn their innovative ideas into reality. With engaging case studies and expert insights, John Doe equips readers with the tools they need to succeed in their entrepreneurial journey. Whether you are a first-time business owner or looking to expand an existing venture, this book is a valuable resource for anyone ready to take the leap into entrepreneurship.',
     'language': 'English',
@@ -388,7 +386,7 @@ final List<Map<String, dynamic>> trendingbooks = [
     'image': 'assets/images/ebook2.png',
     'title': 'Celebrate the Day of Forest',
     'price': 12.99,
-    'rating': '4.9',
+    'rating': 4.9,
     'author': 'Emily Smith',
     'description': 'Celebrate the Day of Forest is a captivating exploration that delves into the beauty and significance of forests around the world. Emily Smith takes readers on a journey through various ecosystems, highlighting the crucial role forests play in maintaining our planet’s health and biodiversity. This beautifully illustrated book is filled with fascinating facts, stories of conservation efforts, and practical steps individuals can take to protect these vital resources. Through engaging narratives and vivid imagery, readers will develop a deeper appreciation for nature and the urgent need to preserve our forests for future generations.',
     'language': 'English',
@@ -400,7 +398,7 @@ final List<Map<String, dynamic>> trendingbooks = [
     'image': 'assets/images/ebook3.png',
     'title': 'Winter',
     'price': 15.99,
-    'rating': '4.3',
+    'rating': 4.3,
     'author': 'Michael Brown',
     'description': 'Winter is a beautifully written narrative that captures the essence of the coldest season. Michael Brown weaves together tales of introspection, change, and resilience against the backdrop of winter landscapes. Through the eyes of diverse characters, readers will experience the magic and challenges that winter brings, from the serene beauty of snow-covered trees to the struggles of everyday life. The author’s lyrical prose invites readers to reflect on their own winter experiences, evoking a sense of nostalgia and connection to nature. This poignant book will resonate with anyone who has ever found beauty in the stillness of winter.',
     'language': 'English',
@@ -412,7 +410,7 @@ final List<Map<String, dynamic>> trendingbooks = [
     'image': 'assets/images/ebook4.png',
     'title': 'Witness',
     'price': 10.99,
-    'rating': '4.7',
+    'rating': 4.7,
     'author': 'Sarah Johnson',
     'description': 'Witness is a gripping thriller that keeps readers on the edge of their seats from start to finish. Sarah Johnson masterfully crafts a tale of suspense, betrayal, and unexpected twists that will leave readers guessing until the very last page. The story revolves around a pivotal moment that changes the lives of the characters forever, forcing them to confront their deepest fears and darkest secrets. With intricate plot development and rich character depth, this book explores themes of trust, justice, and the consequences of choices. Readers will be captivated by the fast-paced narrative and profound emotional impact of the story.',
     'language': 'English',
@@ -424,7 +422,7 @@ final List<Map<String, dynamic>> trendingbooks = [
     'image': 'assets/images/ebook5.png',
     'title': 'Yellow Box',
     'price': 10.99,
-    'rating': '4.5',
+    'rating': 4.5,
     'author': 'Jessica Lee',
     'description': 'Yellow Box is an imaginative tale that invites readers into a world of creativity and adventure. Jessica Lee’s enchanting storytelling captivates the imagination as it follows the journey of a young protagonist who discovers a mysterious yellow box that holds the key to a realm of possibilities. Throughout the story, readers will experience the joy of exploration, the power of friendship, and the importance of believing in oneself. The vibrant characters and vivid settings breathe life into this delightful narrative, making it a perfect read for anyone seeking inspiration and a sense of wonder in their own lives.',
     'language': 'English',
@@ -436,7 +434,7 @@ final List<Map<String, dynamic>> trendingbooks = [
     'image': 'assets/images/ebook6.png',
     'title': 'The Center',
     'price': 10.99,
-    'rating': '4.3',
+    'rating': 4.3,
     'author': 'David Wilson',
     'description': 'The Center explores the intricacies of human relationships, delving deep into the emotional connections that bind us together. David Wilson examines various facets of love, friendship, and family, providing insightful commentary on what it means to be truly connected to others. Through a series of poignant stories and relatable experiences, readers will reflect on their own relationships and the impact of shared moments. This thought-provoking book encourages a deeper understanding of ourselves and those around us, making it an essential read for anyone seeking to enhance their interpersonal skills and foster meaningful connections.',
     'language': 'English',
@@ -448,7 +446,7 @@ final List<Map<String, dynamic>> trendingbooks = [
     'image': 'assets/images/ebook7.png',
     'title': 'Joy of Consent',
     'price': 10.99,
-    'rating': '4.1',
+    'rating': 4.1,
     'author': 'Karen Davis',
     'description': 'Joy of Consent is an enlightening book that focuses on the critical importance of consent in all aspects of life. Karen Davis discusses the various dimensions of consent, exploring its role in relationships, communication, and personal autonomy. With thoughtful insights and practical advice, this book serves as a guide to fostering a culture of respect and understanding. Readers will learn how to navigate conversations around consent, develop healthy boundaries, and empower themselves and others to express their needs and desires. Through real-life examples and empowering narratives, this book inspires positive change in personal and societal dynamics.',
     'language': 'English',
@@ -460,7 +458,7 @@ final List<Map<String, dynamic>> trendingbooks = [
     'image': 'assets/images/ebook8.png',
     'title': 'Good Habits',
     'price': 10.99,
-    'rating': '4.9',
+    'rating': 4.9,
     'author': 'Chris Martinez',
     'description': 'Good Habits is a practical guide that helps readers develop essential habits for personal and professional growth. Chris Martinez emphasizes the importance of consistency, discipline, and motivation in achieving lasting change. Through actionable strategies and relatable anecdotes, this book provides readers with the tools they need to cultivate positive habits that lead to success. Each chapter offers insights into habit formation, goal-setting, and overcoming obstacles, making it an invaluable resource for anyone looking to improve their life. By focusing on the power of daily routines, readers will discover how small changes can lead to significant transformations over time.',
     'language': 'English',
@@ -477,7 +475,7 @@ final List<Map<String, dynamic>> recommendedbooks = [
     'image': 'assets/images/ebook9.png',
     'title': 'Stephen King',
     'price': 9.99,
-    'rating': '4.7',
+    'rating': 4.7,
     'author': 'Stephen King',
     'language': 'English',
     'numberofpage': 400,
@@ -488,7 +486,7 @@ final List<Map<String, dynamic>> recommendedbooks = [
     'image': 'assets/images/ebook10.png',
     'title': 'History of Burning',
     'price': 12.99,
-    'rating': '4.8',
+    'rating': 4.8,
     'author': 'Laura Johnson',
     'language': 'English',
     'numberofpage': 350,
@@ -499,7 +497,7 @@ final List<Map<String, dynamic>> recommendedbooks = [
     'image': 'assets/images/ebook11.png',
     'title': 'Excavation',
     'price': 15.99,
-    'rating': '4.3',
+    'rating': 4.3,
     'author': 'Michael Roberts',
     'language': 'English',
     'numberofpage': 320,
@@ -510,7 +508,7 @@ final List<Map<String, dynamic>> recommendedbooks = [
     'image': 'assets/images/ebook12.png',
     'title': 'What Napoleon Could Not Do',
     'price': 10.99,
-    'rating': '4.9',
+    'rating': 4.9,
     'author': 'Emily Davis',
     'language': 'English',
     'numberofpage': 280,
@@ -521,7 +519,7 @@ final List<Map<String, dynamic>> recommendedbooks = [
     'image': 'assets/images/ebook13.png',
     'title': 'The Guest Lecturer',
     'price': 10.99,
-    'rating': '4.1',
+    'rating': 4.1,
     'author': 'Daniel Lee',
     'language': 'English',
     'numberofpage': 250,
@@ -532,7 +530,7 @@ final List<Map<String, dynamic>> recommendedbooks = [
     'image': 'assets/images/ebook14.png',
     'title': 'This is Salvaged',
     'price': 10.99,
-    'rating': '4.8',
+    'rating': 4.8,
     'author': 'Sarah Wilson',
     'language': 'English',
     'numberofpage': 270,
@@ -543,7 +541,7 @@ final List<Map<String, dynamic>> recommendedbooks = [
     'image': 'assets/images/ebook15.png',
     'title': 'Molly Gohee',
     'price': 10.99,
-    'rating': '4.0',
+    'rating': 4.0,
     'author': 'Jessica Clark',
     'language': 'English',
     'numberofpage': 230,

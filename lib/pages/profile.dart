@@ -1,4 +1,3 @@
-import 'package:ebook_shelf/pages/homepage.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {
@@ -18,11 +17,11 @@ class _ProfileState extends State<Profile> {
 
       appBar: AppBar(
 
-        title: Text('Books', style: TextStyle(color: Colors.white),),
+        title: const Text('Books', style: TextStyle(color: Colors.white),),
         backgroundColor: primaryColor,
       ),
 
-      body: Center(
+      body: const Center(
         child: Text('Profile Page'),
       ),
     );

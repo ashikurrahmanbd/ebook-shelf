@@ -1,7 +1,6 @@
-import 'package:ebook_shelf/app_bottom_navigation.dart';
 import 'package:ebook_shelf/appcolors.dart';
-import 'package:ebook_shelf/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 
 class SingleBook extends StatelessWidget {
 
@@ -10,13 +9,13 @@ class SingleBook extends StatelessWidget {
   final String? image;
   final String ?description;
   final double? price;
-  final String? rating;
+  final double? rating;
   final int? numberofpage;
   final String? lagunage;
   final String? bookcategory;
 
   const SingleBook({
-    Key? key,
+    super.key,
      this.title,
      this.author,
      this.image,
@@ -26,7 +25,7 @@ class SingleBook extends StatelessWidget {
     this.numberofpage,
     this.lagunage,
     this.bookcategory,
-  }) : super(key: key);
+  });
 
 
 
@@ -40,10 +39,10 @@ class SingleBook extends StatelessWidget {
             onTap: (){
               Navigator.pop(context);
             },
-            child: Icon(Icons.arrow_circle_left,
+            child: const Icon(Icons.arrow_circle_left,
               size: 34, color: Colors.white,)
         ),
-        actions: [
+        actions: const [
           Icon(Icons.favorite_border, color: Colors.white,),
           SizedBox(width: 10,)
         ],
@@ -80,7 +79,7 @@ class SingleBook extends StatelessWidget {
                               color: Colors.black.withOpacity(0.25),  // Shadow color with transparency
                               spreadRadius: 5,  // Spread of the shadow
                               blurRadius: 10,  // Softness of the shadow
-                              offset: Offset(0, 5),  // Position of the shadow (x, y)
+                              offset: const Offset(0, 5),  // Position of the shadow (x, y)
                             ),
                           ],
                         ),
@@ -100,29 +99,27 @@ class SingleBook extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 60,),
+            const SizedBox(height: 60,),
             Container(
               width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               child: Column(
                 children: [
-                  Text('$title', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(AppPrimaryColor.appHeadingTextColor!)), textAlign: TextAlign.center,),
-                  SizedBox(height: 4,),
+                  Text('$title', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(AppPrimaryColor.appHeadingTextColor)), textAlign: TextAlign.center,),
+                  const SizedBox(height: 4,),
                   //author
-                  Text('$author', style: TextStyle(fontSize: 14,), textAlign: TextAlign.center,),
-                  SizedBox(height: 4,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.star, color: Colors.yellow,),
-                      Icon(Icons.star, color: Colors.yellow,),
-                      Icon(Icons.star, color: Colors.yellow,),
-                      Icon(Icons.star, color: Colors.yellow,),
-                      Icon(Icons.star, color: Colors.yellow,)
-                    ],
+                  Text('$author', style: const TextStyle(fontSize: 14,), textAlign: TextAlign.center,),
+                  const SizedBox(height: 4,),
+                  RatingStars(
+                    starCount: 5,
+                    value: rating!,
+                    starSize: 14,
+                    starSpacing: 2,
+                    starColor: Colors.yellow,
+                    valueLabelVisibility: false,
                   ),
 
-                  SizedBox(height: 14,)
+                  const SizedBox(height: 14,)
 
 
 
@@ -133,9 +130,9 @@ class SingleBook extends StatelessWidget {
             //book basic info
             Container(
               width: MediaQuery.of(context).size.width,
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 12),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -144,7 +141,7 @@ class SingleBook extends StatelessWidget {
                       color: Colors.black.withOpacity(0.1),
                       blurRadius: 1,
                       spreadRadius: 1,
-                      offset: Offset(1, 1)
+                      offset: const Offset(1, 1)
                     )
                   ]
                 ),
@@ -158,20 +155,20 @@ class SingleBook extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            Text('Genere of Books', style: TextStyle(fontSize: 13),),
-                            Text('$bookcategory', style: TextStyle(fontSize: 12, color: Colors.grey),),
+                            const Text('Genere of Books', style: TextStyle(fontSize: 13),),
+                            Text('$bookcategory', style: const TextStyle(fontSize: 12, color: Colors.grey),),
                           ],
                         ),
                         Column(
                           children: [
-                            Text('Lauguage', style: TextStyle(fontSize: 13),),
-                            Text('${lagunage}', style: TextStyle(fontSize: 12, color: Colors.grey),),
+                            const Text('Lauguage', style: TextStyle(fontSize: 13),),
+                            Text('$lagunage', style: const TextStyle(fontSize: 12, color: Colors.grey),),
                           ],
                         ),
                         Column(
                           children: [
-                            Text('Number of Pages', style: TextStyle(fontSize: 13),),
-                            Text('${numberofpage.toString()}', style: TextStyle(fontSize: 12, color: Colors.grey),),
+                            const Text('Number of Pages', style: TextStyle(fontSize: 13),),
+                            Text(numberofpage.toString(), style: const TextStyle(fontSize: 12, color: Colors.grey),),
                           ],
                         ),
                       ],
@@ -183,25 +180,25 @@ class SingleBook extends StatelessWidget {
 
             //Short Description of book
             Container(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
                   ConstrainedBox(
-                      constraints: BoxConstraints(
+                      constraints: const BoxConstraints(
                         minHeight: 100,
 
                       ),
                     child: Column(
                       children: [
                         Text(
-                          ''' ${description} ''',
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
+                          ''' $description ''',
+                          style: const TextStyle(fontSize: 14, color: Colors.grey),
                           textAlign: TextAlign.justify,
                           maxLines: 4,
                           overflow: TextOverflow.ellipsis,
                         ),
-                        SizedBox(height: 25,),
+                        const SizedBox(height: 25,),
                         SizedBox(
                           width: 200,
                           height: 50,
@@ -217,7 +214,7 @@ class SingleBook extends StatelessWidget {
                                 elevation: 5,
 
                               ),
-                              child: Text('Start Reading', style: TextStyle(color: Colors.white, fontSize: 17),)
+                              child: const Text('Start Reading', style: TextStyle(color: Colors.white, fontSize: 17),)
                           ),
                         )
                       ],

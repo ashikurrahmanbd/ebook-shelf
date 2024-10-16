@@ -1,6 +1,5 @@
 import 'package:ebook_shelf/app_bottom_navigation.dart';
 import 'package:ebook_shelf/pages/books.dart';
-import 'package:ebook_shelf/pages/homepage.dart';
 import 'package:ebook_shelf/pages/profile.dart';
 import 'package:ebook_shelf/pages/reading.dart';
 import 'package:ebook_shelf/pages/single_book.dart';
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
             seedColor: Colors.deepPurple.shade300,),
         fontFamily: 'ebookShelfFont',
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           bodySmall: TextStyle(fontSize: 10, color: Color(0xFF485460)),
           bodyMedium: TextStyle(fontSize: 14, color: Color(0xFF485460)),
           bodyLarge: TextStyle(fontSize: 16, color: Color(0xFF485460)),
@@ -47,11 +46,11 @@ class MyApp extends StatelessWidget {
 
       initialRoute: '/',
       routes: {
-        '/': (context) => AppBottomNavigation(),
-        '/books' : (context) => Books(),
-        '/readings' : (context) => Reading(),
-        '/profile' : (context) => Profile(),
-        '/singlebook' : (context) => SingleBook(),
+        '/': (context) => const AppBottomNavigation(),
+        '/books' : (context) => const Books(),
+        '/readings' : (context) => const Reading(),
+        '/profile' : (context) => const Profile(),
+        '/singlebook' : (context) => const SingleBook(),
 
       },
     );
@@ -67,7 +66,7 @@ class MyAppTheme extends ThemeExtension<MyAppTheme>{
     @override
     MyAppTheme copyWith({LinearGradient? thirdColor}) {
       return MyAppTheme(
-        primaryGradientColor: thirdColor ?? this.primaryGradientColor,
+        primaryGradientColor: thirdColor ?? primaryGradientColor,
       );
     }
 

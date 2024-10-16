@@ -1,4 +1,3 @@
-import 'package:ebook_shelf/main.dart';
 import 'package:ebook_shelf/pages/books.dart';
 import 'package:ebook_shelf/pages/homepage.dart';
 import 'package:ebook_shelf/pages/profile.dart';
@@ -19,10 +18,10 @@ class _AppBottomNavigationState extends State<AppBottomNavigation> {
     int pageIndex = 0;
 
     List<Widget> bottomNavPages = [
-      HomePage(),
-      Books(),
-      Reading(),
-      Profile(),
+      const HomePage(),
+      const Books(),
+      const Reading(),
+      const Profile(),
     ];
 
 
@@ -50,7 +49,7 @@ class _AppBottomNavigationState extends State<AppBottomNavigation> {
                     pageIndex = value;
                   });
                 },
-                items: [
+                items: const [
                   BottomNavigationBarItem(
                       icon: Icon(Icons.home),
                       label: 'Home'

@@ -1,4 +1,3 @@
-import 'package:ebook_shelf/pages/homepage.dart';
 import 'package:flutter/material.dart';
 
 class Reading extends StatefulWidget {
@@ -18,11 +17,11 @@ class _ReadingState extends State<Reading> {
 
       appBar: AppBar(
 
-        title: Text('Readings', style: TextStyle(color: Colors.white),),
+        title: const Text('Readings', style: TextStyle(color: Colors.white),),
         backgroundColor: primaryColor,
       ),
 
-      body: Center(
+      body: const Center(
         child: Text('Reading Page'),
       ),
     );

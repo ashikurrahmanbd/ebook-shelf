@@ -11,6 +11,8 @@ class _ProfileState extends State<Profile> {
 
   get primaryColor => Theme.of(context).colorScheme.primary;
 
+  int _value = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,9 +23,18 @@ class _ProfileState extends State<Profile> {
         backgroundColor: primaryColor,
       ),
 
-      body: const Center(
-        child: Text('Profile Page'),
+      body: Center(
+        child: Text(_value.toString(), style: TextStyle(fontSize: 25, color: Colors.black54),),
       ),
+
+      floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            setState(() {
+              _value++;
+            });
+          }
+      ),
+
     );
   }
 }
